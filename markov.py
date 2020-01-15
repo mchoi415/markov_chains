@@ -10,10 +10,8 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    # your code goes here
-    line_string = ""
     open_text = open(file_path).read()
-    #print(open_text)
+    # print(open_text)
     return open_text
 
 
@@ -37,7 +35,7 @@ def make_chains(text_string):
 
         >>> chains[('hi', 'there')]
         ['mary', 'juanita']
-        
+
         >>> chains[('there','juanita')]
         [None]
     """
@@ -71,9 +69,9 @@ def make_text(chains):
         random_value = choice(chains[key])
         words.append(random_value)
         key = (key[1], random_value)
-        #print(key)
+        # print(key)
 
-    #print(words)
+    # print(words)
 
     return " ".join(words)
 
