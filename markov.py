@@ -43,16 +43,16 @@ def make_chains(text_string):
     """
 
     chains = {}
-
-    # your code goes here
     list_of_words = text_string.split()
-    tuple_words = tuple(list_of_words)
-    for i in range(len(list_of_words) - 2):
-        if (list_of_words[i], list_of_words[i+1]) in chains:
-            chains[(list_of_words[i], list_of_words[i+1])].append(list_of_words[i+2])
-        else:
-            chains[(list_of_words[i], list_of_words[i+1])] = [list_of_words[i+2],]
 
+    for i in range(len(list_of_words) - 2):
+        key = (list_of_words[i], list_of_words[i + 1])
+        next_word = list_of_words[i + 2]
+
+        if key in chains:
+            chains[key].append(next_word)
+        else:
+            chains[key] = [next_word]
 
     return chains
 
@@ -67,14 +67,12 @@ def make_text(chains):
     # print(key)
     # print(type(key))
 
-    while True:
-        if(key in chains):
-            random_value = choice(chains[key])
-            words.append(random_value)
-            key = (key[1], random_value)
-            #print(key)
-        else:
-            break
+    while key not in chains:
+        random_value = choice(chains[key])
+        words.append(random_value)
+        key = (key[1], random_value)
+        #print(key)
+
     #print(words)
 
     return " ".join(words)
