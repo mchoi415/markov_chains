@@ -13,7 +13,7 @@ def open_and_read_file(file_path):
     # your code goes here
     line_string = ""
     open_text = open(file_path).read()
-    print(open_text)
+    #print(open_text)
     return open_text
 
 
@@ -63,15 +63,19 @@ def make_text(chains):
     words = []
 
     # your code goes here
-    key = random.choice(chains)
-    random_value = ""
+    key = choice(list(chains.keys()))
+    # print(key)
+    # print(type(key))
+
     while True:
-        if(key in  chain):
-            random_value += random.choice(chains[key])
-            key = (chains.key()[1], random_value)
+        if(key in chains):
+            random_value = choice(chains[key])
+            words.append(random_value)
+            key = (key[1], random_value)
+            #print(key)
         else:
             break
-
+    #print(words)
 
     return " ".join(words)
 
